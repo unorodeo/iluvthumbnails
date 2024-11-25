@@ -1,9 +1,6 @@
-import { Button, buttonVariants } from "@/components/ui/button";
-
-import { Icons } from "@/components/ui/icons";
-import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Section } from "@/components/ui/section";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/cn";
 
 export default function Home() {
