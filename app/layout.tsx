@@ -7,7 +7,10 @@ import { Providers } from "@/components/providers";
 import { cn } from "@/lib/cn";
 
 export const metadata: Metadata = {
-	title: "I💖thumbnails | Generated unqiue thumbnails for your projects",
+	title: {
+		template: "%s | I💖thumbnails",
+		default: "I💖thumbnails | Generated unqiue thumbnails for your projects",
+	},
 	description: "Generated unqiue thumbnails for your projects.",
 };
 
