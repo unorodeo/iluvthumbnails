@@ -60,9 +60,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 					if (error instanceof ZodError) {
 						return null;
 					}
-
-					return null;
 				}
+				return null;
 			},
 		}),
 	],
