@@ -6,7 +6,7 @@ const password = string()
 	.min(8)
 	.max(25)
 	.regex(
-		/"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{0,}/,
+		/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{0,}/,
 		{
 			message: "Invalid password",
 		}
@@ -20,6 +20,7 @@ const signInSchema = object({
 });
 
 const signUpSchema = object({
+	name: string().min(4).max(20),
 	email: email,
 	password: password,
 	confirm: password,
