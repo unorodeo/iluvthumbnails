@@ -19,13 +19,13 @@ export default function Home() {
 			<Section>
 				<div className="flex flex-col md:flex-row md:items-center md:justify-center gap-4">
 					<Link
-						href={"/"}
+						href={"/sign-up"}
 						className={cn(buttonVariants({ size: "sm" }))}
 					>
 						Create a free account
 					</Link>
 					<Link
-						href={"/"}
+						href={"/sign-in"}
 						className={cn(buttonVariants({ variant: "secondary", size: "sm" }))}
 					>
 						Sign in
