@@ -1,7 +1,10 @@
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
 import { Section } from "@/components/ui/section";
+import { cn } from "@/lib/cn";
 
 export default function Home() {
 	return (
@@ -17,24 +20,19 @@ export default function Home() {
 				</hgroup>
 			</Section>
 			<Section>
-				<div className="grid place-items-center">
-					<div className="w-72">
-						<div className="grid gap-2">
-							<Input
-								type="email"
-								placeholder="Enter email address"
-							/>
-							<Button
-								type="button"
-								variant={"secondary"}
-								size={"sm"}
-								className="w-full"
-							>
-								Get magic link
-								<Icons.TriangleRightIcon />
-							</Button>
-						</div>
-					</div>
+				<div className="flex flex-col md:flex-row md:items-center md:justify-center gap-4">
+					<Link
+						href={"/"}
+						className={cn(buttonVariants({ size: "sm" }))}
+					>
+						Create a free account
+					</Link>
+					<Link
+						href={"/"}
+						className={cn(buttonVariants({ variant: "secondary", size: "sm" }))}
+					>
+						Sign in
+					</Link>
 				</div>
 			</Section>
 		</>
