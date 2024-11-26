@@ -26,7 +26,7 @@ export default function RootLayout({
 		>
 			<body
 				className={cn(
-					"font-geist-sans antialiased",
+					"dark font-geist-sans antialiased",
 					geistSans.variable,
 					geistMono.variable
 				)}
