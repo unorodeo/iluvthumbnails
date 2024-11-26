@@ -1,4 +1,4 @@
-import NextAuth, { type DefaultSession } from "next-auth";
+import NextAuth, { CredentialsSignin, type DefaultSession } from "next-auth";
 
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { db } from "@/lib/db";
@@ -46,7 +46,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 					const user = await getAccount(email);
 
 					if (!user) {
-						throw new Error("Account not found");
+						throw new CredentialsSignin("Account not found");
 					}
 
 					const pass = await compare(password, user.password as string);
@@ -72,4 +72,5 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 	session: {
 		strategy: "jwt",
 	},
+	debug: process.env.NODE_ENV === "development",
 });
