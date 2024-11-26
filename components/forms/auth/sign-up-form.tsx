@@ -3,34 +3,53 @@
 import {
 	Form,
 	FormControl,
+	FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
+import { ToastClose, ToastTitle } from "@/components/ui/toast";
 
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
+import { Loader2Icon } from "lucide-react";
 import React from "react";
+import { signUp } from "@/actions/auth";
 import { signUpSchema } from "@/lib/zod/auth";
 import { useForm } from "react-hook-form";
+import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export const SignUpForm: React.FC = () => {
+	const { toast } = useToast();
 	const form = useForm<z.infer<typeof signUpSchema>>({
 		resolver: zodResolver(signUpSchema),
 		defaultValues: {
-      name:"",
+			name: "",
 			email: "",
 			password: "",
 			confirm: "",
 		},
 	});
 
-	function onSubmit(values: z.infer<typeof signUpSchema>) {
-		console.log(values);
+	async function onSubmit(values: z.infer<typeof signUpSchema>) {
+		const error = await signUp(values);
+
+		if (error) {
+			toast({
+				description: error,
+				variant: "destructive",
+			});
+		} else {
+			toast({
+				title: "Sign up complete",
+				description: "Now redirecting to sign in...",
+				variant: "successive",
+			});
+		}
 	}
 	return (
 		<Form {...form}>
@@ -49,9 +68,13 @@ export const SignUpForm: React.FC = () => {
 									type="text"
 									placeholder="Enter display name"
 									variant={"secondary"}
+									autoFocus
 									{...field}
 								/>
 							</FormControl>
+							<FormDescription>
+								This is your public display name.
+							</FormDescription>
 							<FormMessage />
 						</FormItem>
 					)}
@@ -113,9 +136,20 @@ export const SignUpForm: React.FC = () => {
 				<Button
 					type="submit"
 					className="w-full"
+					aria-disabled={form.formState.isSubmitting}
+					disabled={form.formState.isSubmitting}
 				>
-					Continue
-					<Icons.TriangleRightIcon />
+					{form.formState.isSubmitting ? (
+						<>
+							Please wait
+							<Loader2Icon className="animate-spin" />
+						</>
+					) : (
+						<>
+							Continue
+							<Icons.TriangleRightIcon />
+						</>
+					)}
 				</Button>
 			</form>
 		</Form>
