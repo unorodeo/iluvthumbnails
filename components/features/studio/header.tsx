@@ -8,7 +8,7 @@ import { UserBtn } from "@/components/features/user-btn";
 
 export const Header: React.FC = () => {
 	return (
-		<header className="sticky inset-x-0 top-0 border-b bg-background">
+		<header className="sticky inset-x-0 top-0 z-50 border-b bg-background">
 			<nav className="flex items-center justify-between max-w-6xl px-4 mx-auto md:px-8 h-14">
 				<Brand href="/studio" />
 
