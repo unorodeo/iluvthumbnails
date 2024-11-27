@@ -7,17 +7,17 @@ import React from "react";
 import { cn } from "@/lib/cn";
 import { focusRing } from "@/lib/focuses";
 
-interface KpiData {
-	title: string;
-	img: string;
+interface Preset {
+	src: string;
+	label: string;
 }
 interface Props {
-	data: KpiData;
-	pickedImg?: () => void;
-	chosenImg?: boolean;
+	data: Preset;
+	preset?: boolean;
+	setPreset?: () => void;
 }
 
-export const CreateKpi: React.FC<Props> = ({ data, pickedImg, chosenImg }) => {
+export const Preset: React.FC<Props> = ({ data, preset, setPreset }) => {
 	return (
 		<Link
 			href={"#"}
@@ -28,12 +28,12 @@ export const CreateKpi: React.FC<Props> = ({ data, pickedImg, chosenImg }) => {
 					<div
 						className={cn("relative rounded shadow-sm min-h-44", {
 							"ring-2 ring-offset-background ring-offset-2 ring-blue-500":
-								chosenImg,
+								preset,
 						})}
 					>
 						<Image
-							src={data.img}
-							alt={`${data.title} template cover`}
+							src={data.src}
+							alt={`${data.label} preset cover`}
 							fill
 							className="object-cover w-full h-auto rounded"
 							priority
@@ -42,7 +42,7 @@ export const CreateKpi: React.FC<Props> = ({ data, pickedImg, chosenImg }) => {
 				</CardHeader>
 				<CardFooter>
 					<div className="inline-flex items-center gap-2 text-sm font-medium">
-						use template
+						{data.label}
 						<CircleArrowRightIcon className="-rotate-45 text-muted-foreground size-4" />
 					</div>
 				</CardFooter>
