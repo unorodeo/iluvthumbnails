@@ -26,7 +26,12 @@ export default function RootLayout({
 		>
 			<body
 				className={cn(
+					// base
 					"font-geist-sans antialiased",
+					// scroll-bar
+					"[&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-background [&::-webkit-scrollbar-thumb]:bg-primary",
+					// selection
+					"selection:bg-primary selection:text-primary-foreground",
 					geistSans.variable,
 					geistMono.variable
 				)}
