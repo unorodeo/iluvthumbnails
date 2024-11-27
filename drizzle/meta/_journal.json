@@ -8,6 +8,13 @@
       "when": 1732566544553,
       "tag": "0000_fine_stone_men",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1732665783791,
+      "tag": "0001_clumsy_victor_mancha",
+      "breakpoints": true
     }
   ]
 }
