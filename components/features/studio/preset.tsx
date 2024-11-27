@@ -23,7 +23,7 @@ export const Preset: React.FC<Props> = ({ data, preset, setPreset }) => {
 			href={"#"}
 			className={cn("rounded-md ring-offset-2", focusRing)}
 		>
-			<Card className="border-none shadow-none hover:bg-muted dark:hover:bg-muted/20">
+			<Card className="border-none shadow-none hover:bg-muted dark:bg-muted/20 dark:hover:bg-muted/50">
 				<CardHeader>
 					<div
 						className={cn("relative rounded shadow-sm min-h-44", {
