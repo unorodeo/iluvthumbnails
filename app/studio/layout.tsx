@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import { Header } from "@/studio/header";
 import { ReactNode } from "react";
 
@@ -10,6 +11,7 @@ export default function StudioLayout({ children }: Props) {
 		<main className="flex flex-col justify-between min-h-screen">
 			<Header />
 			<section className="relative flex-1">{children}</section>
+			<Footer />
 		</main>
 	);
 }
