@@ -19,3 +19,12 @@ export const createAccount = async (
 		password: data.password,
 	});
 };
+
+export const getCredits = async (sessionUserId: string) => {
+	return db.query.users.findFirst({
+		where: eq(users.id, sessionUserId),
+		columns: {
+			credits: true,
+		},
+	});
+};

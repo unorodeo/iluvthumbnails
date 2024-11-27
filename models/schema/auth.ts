@@ -18,6 +18,8 @@ export const users = pgTable("user", {
 	password: text("password"),
 	emailVerified: timestamp("emailVerified", { mode: "date" }),
 	image: text("image"),
+
+	credits: integer("credits").default(20),
 });
 
 export const accounts = pgTable(
