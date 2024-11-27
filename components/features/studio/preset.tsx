@@ -35,6 +35,7 @@ export const Preset: React.FC<Props> = ({ data, preset, setPreset }) => {
 							src={data.src}
 							alt={`${data.label} preset cover`}
 							fill
+							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 							className="object-cover w-full h-auto rounded"
 							priority
 						/>
