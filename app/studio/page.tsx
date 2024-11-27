@@ -1,3 +1,4 @@
+import { Creator } from "@/studio/creator";
 import { Section } from "@/components/ui/section";
 import { auth } from "@/lib/auth";
 import { getCredits } from "@/utils/orm-queries";
@@ -29,13 +30,13 @@ export default async function Studio() {
 					</p>
 				</hgroup>
 			</Section>
-			<Section>
-				{data?.credits! >= 1 ? (
-					<div>thumbnails creator</div>
-				) : (
-					<div>buy more credits</div>
-				)}
-			</Section>
+			{data?.credits! >= 1 ? (
+				<Creator />
+			) : (
+				<Section>
+					<p>Buy more credits</p>
+				</Section>
+			)}
 		</>
 	);
 }
