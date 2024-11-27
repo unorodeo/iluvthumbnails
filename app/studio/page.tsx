@@ -18,6 +18,10 @@ export default async function Studio() {
 
 	const data = await getCredits(session.user.id);
 
+	if(!data?.credits) {
+		return null
+	}
+
 	return (
 		<>
 			<Section>
@@ -30,7 +34,7 @@ export default async function Studio() {
 					</p>
 				</hgroup>
 			</Section>
-			{data?.credits! >= 1 ? (
+			{data?.credits >= 1 ? (
 				<Creator />
 			) : (
 				<Section>
