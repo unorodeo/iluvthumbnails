@@ -1,9 +1,17 @@
 import Link from "next/link";
 import { Section } from "@/components/ui/section";
+import { auth } from "@/lib/auth";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/cn";
+import { redirect } from "next/navigation";
 
-export default function Home() {
+export default async function Home() {
+	const session = await auth();
+
+	if (session?.user) {
+		redirect("/studio");
+	}
+	
 	return (
 		<>
 			<Section className="mt-24">
@@ -17,7 +25,7 @@ export default function Home() {
 				</hgroup>
 			</Section>
 			<Section>
-				<div className="flex flex-col md:flex-row md:items-center md:justify-center gap-4">
+				<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-center">
 					<Link
 						href={"/sign-up"}
 						className={cn(buttonVariants({ size: "sm" }))}
